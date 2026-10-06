@@ -1,6 +1,5 @@
+import 'package:covid19_tracker/reusable_row.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
-
 import 'package:pie_chart/pie_chart.dart';
 
 class WorldStatesScreen extends StatefulWidget {
@@ -43,11 +42,39 @@ class _WorldStatesState extends State<WorldStatesScreen> with TickerProviderStat
             children: [
               SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
               PieChart(
+                animationDuration: Duration(milliseconds: 1200) ,
+                chartType: ChartType.ring,
+                colorList: colorList,
+                chartRadius: MediaQuery.of(context).size.width / 3.2,
+                legendOptions: LegendOptions(
+                  legendPosition: LegendPosition.left
+                ),
                 dataMap:{
                   "Total": 20,
                   "Recovered": 3,
-                  "Deaths": 17
-                }
+                  "Deaths": 17 }
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height  * 0.06 ),
+                  child: Card(
+                    child: Column(
+                      children: [
+                        ReusableRow(title: 'Total',value: '200'),
+                        ReusableRow(title: 'Total',value: '200'),
+                        ReusableRow(title: 'Total',value: '200'),
+                      ],
+                      ),
+                  ),
+                ),
+                Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Color(0xff1aa260),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: Center(
+                    child: Text('Track Countries'),  
+                  ),
                 )
             ],
           ),
