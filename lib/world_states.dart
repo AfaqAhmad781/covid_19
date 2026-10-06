@@ -31,10 +31,6 @@ class _WorldStatesState extends State<WorldStatesScreen> with TickerProviderStat
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.amber.shade900,
-      //   title: Text('Covid 19 Data'),
-      // ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -59,9 +55,12 @@ class _WorldStatesState extends State<WorldStatesScreen> with TickerProviderStat
                   child: Card(
                     child: Column(
                       children: [
-                        ReusableRow(title: 'Total',value: '200'),
-                        ReusableRow(title: 'Total',value: '200'),
-                        ReusableRow(title: 'Total',value: '200'),
+                        ReusableRow(title: 'Total',value: '50,126'),
+                        ReusableRow(title: 'Recovered',value: '30,333'),
+                        ReusableRow(title: 'Deaths',value: '20,745'),
+                        ReusableRow(title: 'Critical',value: '10,253'),
+                        ReusableRow(title: 'Hospitals',value: '577'),
+                        ReusableRow(title: 'Doctos',value: '3,234'),
                       ],
                       ),
                   ),
