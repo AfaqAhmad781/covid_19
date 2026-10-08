@@ -2,7 +2,7 @@ import 'package:covid19_tracker/countries_list.dart';
 import 'package:covid19_tracker/model/world_states_model.dart';
 import 'package:covid19_tracker/reusable_row.dart';
 import 'package:covid19_tracker/services/Utilities/states_services.dart';
-
+import 'package:shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pie_chart/pie_chart.dart';
@@ -49,10 +49,62 @@ class _WorldStatesState extends State<WorldStatesScreen> with TickerProviderStat
                   if(!snapshot.hasData){
                     return Expanded(
                       flex: 1,
-                      child: SpinKitFadingCircle(
-                        color: Colors.white,
-                        size: 50,
-                        controller: _controller,
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.grey.shade700,
+                        highlightColor: Colors.grey.shade100,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: MediaQuery.of(context).size.width / 3.2 * 2,
+                              width: MediaQuery.of(context).size.width / 3.2 * 2,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: MediaQuery.of(context).size.height * 0.06,
+                              ),
+                              child: Card(
+                                child: Column(
+                                  children: List.generate(
+                                    7,
+                                    (index) => Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                        vertical: 12,
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            height: 12,
+                                            width: 80,
+                                            color: Colors.white,
+                                          ),
+                                          Container(
+                                            height: 12,
+                                            width: 40,
+                                            color: Colors.white,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }else{
